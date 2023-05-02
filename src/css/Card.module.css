@@ -1,0 +1,11 @@
+.cardImg {
+  height: 200px;
+}
+
+.card {
+  border: solid 1px black;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+}
