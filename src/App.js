@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
 
+// function importAll(r) {
+//   let images = [];
+//   r.keys().forEach(element => {
+//     images.push(r(element));
+//   });
+//   return images;
+// }
+
 function App() {
+  // const images = importAll(require.context('./assets/images', false, /\.png$/));
+  // src = images[i]
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
     </div>
   );
 }
