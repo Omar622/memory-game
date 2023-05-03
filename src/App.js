@@ -1,23 +1,18 @@
 import './App.css';
 import View from './pages/View';
+import useModel from './hooks/model';
 
+// controller
 function App() {
-  const bestScore = 3;
-  const currentScore = 1;
-  const chosenImages = [0, 1, 2, 3];
-  const handleChooseImage = (id) => {
-    console.log('chose', id);
-  }
+  const [getBestScore, getCurrentScore, getRandomSet, handleChooseImage] = useModel(16);
 
   return (
-    <div className="App">
-      <View
-        bestScore={bestScore}
-        currentScore={currentScore}
-        chosenImages={chosenImages}
-        handleChooseImage={handleChooseImage}
-      ></View>
-    </div>
+    <View
+      bestScore={getBestScore()}
+      currentScore={getCurrentScore()}
+      chosenImages={getRandomSet()}
+      handleChooseImage={handleChooseImage}
+    ></View>
   );
 }
 
