@@ -4,7 +4,8 @@ import useModel from './hooks/model';
 
 // controller
 function App() {
-  const [getBestScore, getCurrentScore, getRandomSet, handleChooseImage] = useModel(16);
+  // 17 is number of used images
+  const [getBestScore, getCurrentScore, getRandomSet, handleChooseImage] = useModel(17);
 
   return (
     <View
