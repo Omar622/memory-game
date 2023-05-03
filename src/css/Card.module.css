@@ -1,5 +1,5 @@
 .cardImg {
-  height: 200px;
+  height: min(calc(35vw), 250px);
 }
 
 .card {
@@ -8,7 +8,7 @@
   padding: 8px;
   display: flex;
   justify-content: center;
-  width: 400px;
+  width: calc(50px + 50%);
 }
 
 .badChoice {
