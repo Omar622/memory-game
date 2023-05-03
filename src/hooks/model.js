@@ -57,6 +57,9 @@ function useModel(numberOfImages) {
   const handleChooseImage = (id) => {
     if (_isCorrectChoose(id)) {
       _choose(id);
+      // player chosen all images correctly
+      if(chosen.length === numberOfImages)
+        _reset();
     } else {
       _reset();
     }
