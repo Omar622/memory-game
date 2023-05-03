@@ -9,3 +9,11 @@
   display: flex;
   justify-content: center;
 }
+
+.badChoice {
+  border: solid 5px red;
+}
+
+.goodChoice {
+  border: solid 5px green;
+}
