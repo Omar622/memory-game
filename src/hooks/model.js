@@ -39,17 +39,21 @@ function useModel(numberOfImages) {
 
   const getRandomSet = () => {
     let set = [];
-    // push one ID not chosen yet
-    let randomId = _randomInRange(0, numberOfImages);
-    while (chosen.includes(randomId))
-      randomId = _randomInRange(0, numberOfImages);
-    set.push(randomId);
-    // push three random IDs
-    for (let i = 0; i < 3; ++i) {
-      randomId = _randomInRange(0, numberOfImages);
-      while (set.includes(randomId))
-        randomId = _randomInRange(0, numberOfImages);
-      set.push(randomId);
+    const indexOfNewImage = _randomInRange(0, 3);
+    for (let i = 0; i < 4; ++i) {
+      if (i === indexOfNewImage) {
+        // push one ID not chosen yet
+        let randomId = _randomInRange(0, numberOfImages - 1);
+        while (chosen.includes(randomId) || set.includes(randomId))
+          randomId = _randomInRange(0, numberOfImages - 1);
+        set.push(randomId);
+      } else {
+        // push random IDs
+        let randomId = _randomInRange(0, numberOfImages - 1);
+        while (set.includes(randomId))
+          randomId = _randomInRange(0, numberOfImages - 1);
+        set.push(randomId);
+      }
     }
     return set;
   }
@@ -58,7 +62,7 @@ function useModel(numberOfImages) {
     if (_isCorrectChoose(id)) {
       _choose(id);
       // player chosen all images correctly
-      if(chosen.length === numberOfImages)
+      if (chosen.length === numberOfImages)
         _reset();
     } else {
       _reset();
