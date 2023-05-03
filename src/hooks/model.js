@@ -39,13 +39,18 @@ function useModel(numberOfImages) {
 
   const getRandomSet = () => {
     let set = [];
+    let notChosen = [];
+    for (let i = 0; i < numberOfImages; ++i) {
+      if (chosen.includes(i)) continue;
+      notChosen.push(i);
+    }
     const indexOfNewImage = _randomInRange(0, 3);
     for (let i = 0; i < 4; ++i) {
       if (i === indexOfNewImage) {
         // push one ID not chosen yet
-        let randomId = _randomInRange(0, numberOfImages - 1);
-        while (chosen.includes(randomId) || set.includes(randomId))
-          randomId = _randomInRange(0, numberOfImages - 1);
+        let randomId = notChosen[_randomInRange(0, notChosen.length - 1)];
+        while (set.includes(randomId))
+          randomId = notChosen[_randomInRange(0, notChosen.length - 1)];
         set.push(randomId);
       } else {
         // push random IDs
@@ -60,10 +65,12 @@ function useModel(numberOfImages) {
 
   const handleChooseImage = (id, evaluateChoice) => {
     if (_isCorrectChoose(id)) {
-      evaluateChoice(true).then(() => _choose(id));
-      // player chosen all images correctly
-      if (chosen.length === numberOfImages)
-        _reset();
+      evaluateChoice(true).then(() => {
+        _choose(id)
+        // player chosen all images correctly
+        if (chosen.length === numberOfImages)
+          _reset();
+      });
     } else {
       evaluateChoice(false).then(() => _reset());
     }
